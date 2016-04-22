@@ -535,6 +535,10 @@ namespace Renci.SshNet.Common
             Write(data, Ascii);
         }
 #endif // !TUNING
+        protected void WriteAscii(string data)
+        {
+            this.Write(data, SshData.Ascii);
+        }
 
         /// <summary>
         /// Writes string data into internal buffer using default encoding.
