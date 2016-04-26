@@ -233,6 +233,13 @@ namespace Renci.SshNet
             BufferSize = 1024 * 32;
         }
 
+        public SftpClient(BaseClient existingConnection): base(existingConnection)
+        {
+            OperationTimeout = new TimeSpan(0, 0, 0, 0, -1);
+            BufferSize = 1024 * 32;
+            OnConnected();
+        }
+
         #endregion Constructors
 
         /// <summary>

@@ -35,6 +35,7 @@ namespace Renci.SshNet.Pageant
        {
            get
            {
+                if (Environment.OSVersion.Platform != PlatformID.Win32NT) return false; // this should never run on windows
                var hWnd = NativeMethods.FindWindow("Pageant", "Pageant");
 
                return hWnd != IntPtr.Zero;
@@ -45,12 +46,6 @@ namespace Renci.SshNet.Pageant
 
         public PageantProtocol()
         {
-            var hWnd = NativeMethods.FindWindow("Pageant", "Pageant");
-
-            if (hWnd == IntPtr.Zero)
-            {
-                throw new SshException("Pageant not running");
-            }
             
         }
 
@@ -59,6 +54,7 @@ namespace Renci.SshNet.Pageant
 
         IEnumerable<IdentityReference> IAgentProtocol.GetIdentities()
         {
+            if (!IsRunning) yield break;
             var hWnd = NativeMethods.FindWindow("Pageant", "Pageant");
 
             if (hWnd == IntPtr.Zero)

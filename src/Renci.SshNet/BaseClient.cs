@@ -175,6 +175,15 @@ namespace Renci.SshNet
         }
 
         /// <summary>
+        /// create a client based on an existing session
+        /// </summary>
+        /// <param name="establishedSession">current session</param>
+        internal BaseClient(BaseClient establishedSession) : this(establishedSession.ConnectionInfo, false)
+        {
+            this.Session = establishedSession.Session;
+        }
+
+        /// <summary>
         /// Connects client to the server.
         /// </summary>
         /// <exception cref="InvalidOperationException">The client is already connected.</exception>

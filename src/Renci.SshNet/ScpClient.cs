@@ -55,6 +55,13 @@ namespace Renci.SshNet
             : this(connectionInfo, false)
         {
         }
+        /// <summary>
+        /// Create scp client based on existing session
+        /// </summary>
+        /// <param name="establishedSession"></param>
+        public ScpClient(BaseClient establishedSession) : base(establishedSession)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SftpClient"/> class.
