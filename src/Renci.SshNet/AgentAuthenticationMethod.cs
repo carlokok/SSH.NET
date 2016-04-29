@@ -8,19 +8,50 @@ using System.Collections.Generic;
 
 namespace Renci.SshNet
 {
+    /// <summary>
+    /// Agent protocol support
+    /// </summary>
     public interface IAgentProtocol
     {
+        /// <summary>
+        /// List of identities
+        /// </summary>
+        /// <returns></returns>
         IEnumerable<IdentityReference> GetIdentities();
 
+        /// <summary>
+        /// Sign an identity
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         byte[] SignData(IdentityReference identity, byte[] data);
     }
 
+    /// <summary>
+    /// Holds an identity reference
+    /// </summary>
     public class IdentityReference
     {
+        /// <summary>
+        /// returns the type
+        /// </summary>
         public string Type { get; private set; }
+        /// <summary>
+        /// returns the blob
+        /// </summary>
         public byte[] Blob { get; private set; }
+        /// <summary>
+        /// returns the comments
+        /// </summary>
         public string Comment { get; private set; }
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="blob"></param>
+        /// <param name="comment"></param>
         public IdentityReference(string type, byte[] blob, string comment)
         {
             this.Type = type;

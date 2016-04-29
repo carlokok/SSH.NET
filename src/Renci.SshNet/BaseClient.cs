@@ -127,6 +127,11 @@ namespace Renci.SshNet
         public event EventHandler<ExceptionEventArgs> ErrorOccurred;
 
         /// <summary>
+        /// Occurs when the ssh connection is diconnected (for both failure and regular disconnects)
+        /// </summary>
+        public event EventHandler Disconnected;
+
+        /// <summary>
         /// Occurs when host key received.
         /// </summary>
         /// <example>
@@ -297,6 +302,11 @@ namespace Renci.SshNet
         /// </summary>
         protected virtual void OnDisconnected()
         {
+            var handler = Disconnected;
+            if (handler != null)
+            {
+                handler(this, EventArgs.Empty);
+            }
         }
 
         private void Session_ErrorOccured(object sender, ExceptionEventArgs e)

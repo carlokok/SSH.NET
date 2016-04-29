@@ -12,6 +12,17 @@ using Renci.SshNet.Abstractions;
 
 namespace Renci.SshNet
 {
+    public class SshDataReceivedEventArgs: EventArgs
+    {
+        public SshDataReceivedEventArgs(byte[] data, bool err)
+        {
+            this.ErrorOutput = err;
+            this.Data = data;
+
+        }
+        public bool ErrorOutput { get; private set; }
+        public byte[] Data { get; private set; }
+    }
     /// <summary>
     /// Represents SSH command that can be executed.
     /// </summary>
@@ -33,6 +44,11 @@ namespace Renci.SshNet
         private bool _hasError;
 
         private readonly object _endExecuteLock = new object();
+
+        /// <summary>
+        /// if set, the output and extended streams won't get the data.
+        /// </summary>
+        public event EventHandler<SshDataReceivedEventArgs> DataReceived;
 
         /// <summary>
         /// Gets the command text.
@@ -370,10 +386,12 @@ namespace Renci.SshNet
                 this.ExtendedOutputStream = null;
             }
 
-            //  Initialize output streams and StringBuilders
-            this.OutputStream = new PipeStream();
-            this.ExtendedOutputStream = new PipeStream();
-
+            if (DataReceived == null)
+            {
+                //  Initialize output streams and StringBuilders
+                this.OutputStream = new PipeStream();
+                this.ExtendedOutputStream = new PipeStream();
+            }
             this._result = null;
             this._error = null;
         }
@@ -447,6 +465,10 @@ namespace Renci.SshNet
 
         private void Channel_ExtendedDataReceived(object sender, ChannelExtendedDataEventArgs e)
         {
+            var handler = DataReceived;
+            if (handler != null)
+                handler(this, new SshDataReceivedEventArgs(e.Data, true));
+            else
             if (this.ExtendedOutputStream != null)
             {
                 this.ExtendedOutputStream.Write(e.Data, 0, e.Data.Length);
@@ -461,6 +483,10 @@ namespace Renci.SshNet
 
         private void Channel_DataReceived(object sender, ChannelDataEventArgs e)
         {
+            var handler = DataReceived;
+            if (handler != null)
+                handler(this, new SshDataReceivedEventArgs(e.Data, false));
+            else
             if (this.OutputStream != null)
             {
                 this.OutputStream.Write(e.Data, 0, e.Data.Length);
@@ -476,6 +502,31 @@ namespace Renci.SshNet
             }
         }
 
+        /// <summary>
+        /// send data
+        /// </summary>
+        /// <param name="data">input</param>
+        public void Write(byte[] data)
+        {
+            _channel.SendData(data);
+        }
+
+        /// <summary>
+        /// send data
+        /// </summary>
+        /// <param name="data">input</param>
+        public void Write(string data)
+        {
+            Write(_encoding.GetBytes(data));
+        }
+        /// <summary>
+        /// send a full line of data
+        /// </summary>
+        /// <param name="data">input</param>
+        public void WriteLine(string data)
+        {
+            Write(_encoding.GetBytes(data + "\n"));
+        }
         /// <exception cref="SshOperationTimeoutException">Command '{0}' has timed out.</exception>
         /// <remarks>The actual command will be included in the exception message.</remarks>
         private void WaitOnHandle(WaitHandle waitHandle)
