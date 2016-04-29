@@ -11,6 +11,13 @@ namespace Renci.SshNet.Messages.Authentication
     [Message("SSH_MSG_USERAUTH_INFO_REQUEST", 60)]
     internal class InformationRequestMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.InformationRequest;
+            }
+        }
         /// <summary>
         /// Gets information request name.
         /// </summary>

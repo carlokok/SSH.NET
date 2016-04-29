@@ -9,6 +9,13 @@ namespace Renci.SshNet.Messages.Transport
     [Message("SSH_MSG_SERVICE_ACCEPT", MessageNumber)]
     public class ServiceAcceptMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ServiceAccept;
+            }
+        }
         internal const byte MessageNumber = 6;
 
         /// <summary>

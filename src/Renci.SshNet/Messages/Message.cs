@@ -201,5 +201,56 @@ namespace Renci.SshNet.Messages
 
             return messageAttribute.Name;
         }
+
+        /// <summary>
+        /// enum type
+        /// </summary>
+        public abstract MessageType Type { get; }
+    }
+
+    public enum MessageType
+    {
+        Failure,
+        InformationRequest,
+        InformationResponse,
+        PasswordChangeRequired,
+        PublicKey,
+        RequestMessageHost,
+        RequestKeyboardInteractive,
+        RequestNone,
+        Success,
+        RequestPassword,
+        ChannelClose,
+        ChannelData,
+        ChannelEof,
+        ChannelExtendedData,
+        ChannelFailure,
+        ChannelOpenConfirmation,
+        ChannelOpenFailure,
+        ChannelOpenMessage,
+        ChannelRequestMessage,
+        ChannelSuccessMessage,
+        ChannelWindowAdjustMessage,
+        GlobalRequest,
+        RequestFailure,
+        RequestSuccess,
+        Debug,
+        Ignore,
+        KeyExchangeDhGroupExchangeInit,
+        NewKeys,
+        Disconnect,
+        ServiceAccept,
+        ServiceRequest,
+        Unimplemented,
+        Banner,
+        KeyExchangeDhGroupExchangeGroup,
+        KeyExchangeDhGroupExchangeReply,
+        KeyExchangeDhGroupExchangeRequest,
+        KeyExchangeDhInitMessage,
+        KeyExchangeDhReplyMessage,
+        KeyExchangeEcdhInitMessage,
+        KeyExchangeEcdhReplyMessage,
+        KeyExchangeInit,
+        RequestPublicKey
     }
 }

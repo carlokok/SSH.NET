@@ -6,6 +6,13 @@
     [Message("SSH_MSG_USERAUTH_SUCCESS", 52)]
     public class SuccessMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.Success;
+            }
+        }
         /// <summary>
         /// Called when type specific data need to be loaded.
         /// </summary>

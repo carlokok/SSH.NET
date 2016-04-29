@@ -6,6 +6,13 @@
     [Message("SSH_MSG_CHANNEL_SUCCESS", 99)]
     public class ChannelSuccessMessage : ChannelMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelSuccessMessage;
+            }
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="ChannelSuccessMessage"/> class.
         /// </summary>

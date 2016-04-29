@@ -6,6 +6,13 @@
     [Message("SSH_MSG_DEBUG", 4)]
     public class DebugMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.Debug;
+            }
+        }
 #if TUNING
         private byte[] _message;
         private byte[] _language;

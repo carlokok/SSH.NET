@@ -6,6 +6,13 @@
     [Message("SSH_MSG_USERAUTH_PK_OK", 60)]
     internal class PublicKeyMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.PublicKey;
+            }
+        }
 #if TUNING
         /// <summary>
         /// Gets the name of the public key algorithm as ASCII encoded byte array.

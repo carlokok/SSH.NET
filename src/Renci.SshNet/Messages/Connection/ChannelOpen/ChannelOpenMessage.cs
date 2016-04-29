@@ -9,6 +9,13 @@ namespace Renci.SshNet.Messages.Connection
     [Message("SSH_MSG_CHANNEL_OPEN", MessageNumber)]
     public class ChannelOpenMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelOpenMessage;
+            }
+        }
         internal const byte MessageNumber = 90;
 
 #if TUNING

@@ -6,6 +6,13 @@
     [Message("SSH_MSG_CHANNEL_WINDOW_ADJUST", 93)]
     public class ChannelWindowAdjustMessage : ChannelMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelWindowAdjustMessage;
+            }
+        }
         /// <summary>
         /// Gets number of bytes to add to the window.
         /// </summary>

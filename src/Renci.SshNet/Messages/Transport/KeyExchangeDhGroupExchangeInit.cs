@@ -8,6 +8,13 @@ namespace Renci.SshNet.Messages.Transport
     [Message("SSH_MSG_KEX_DH_GEX_INIT", 32)]
     internal class KeyExchangeDhGroupExchangeInit : Message, IKeyExchangedAllowed
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.KeyExchangeDhGroupExchangeInit;
+            }
+        }
 #if TUNING
         private byte[] _eBytes;
 #endif

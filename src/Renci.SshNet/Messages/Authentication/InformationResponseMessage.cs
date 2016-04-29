@@ -9,6 +9,13 @@ namespace Renci.SshNet.Messages.Authentication
     [Message("SSH_MSG_USERAUTH_INFO_RESPONSE", 61)]
     internal class InformationResponseMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.InformationResponse;
+            }
+        }
         /// <summary>
         /// Gets authentication responses.
         /// </summary>

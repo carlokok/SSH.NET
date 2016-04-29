@@ -11,6 +11,13 @@ namespace Renci.SshNet.Messages.Transport
     [Message("SSH_MSG_KEXECDH_INIT", 30)]
     internal class KeyExchangeEcdhInitMessage : Message, IKeyExchangedAllowed
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.KeyExchangeEcdhInitMessage;
+            }
+        }
         /// <summary>
         /// Gets the client's ephemeral contribution to the ECDH exchange, encoded as an octet string
         /// </summary>

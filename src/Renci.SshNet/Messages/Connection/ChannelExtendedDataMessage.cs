@@ -6,6 +6,13 @@
     [Message("SSH_MSG_CHANNEL_EXTENDED_DATA", 95)]
     public class ChannelExtendedDataMessage : ChannelMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelExtendedData;
+            }
+        }
         /// <summary>
         /// Gets message data type code.
         /// </summary>

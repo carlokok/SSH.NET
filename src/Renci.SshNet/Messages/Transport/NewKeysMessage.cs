@@ -8,6 +8,13 @@ namespace Renci.SshNet.Messages.Transport
     [Message("SSH_MSG_NEWKEYS", 21)]
     public class NewKeysMessage : Message, IKeyExchangedAllowed
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.NewKeys;
+            }
+        }
         /// <summary>
         /// Called when type specific data need to be loaded.
         /// </summary>

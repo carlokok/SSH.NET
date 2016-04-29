@@ -5,6 +5,13 @@
     /// </summary>
     internal class RequestMessageKeyboardInteractive : RequestMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.RequestKeyboardInteractive;
+            }
+        }
         /// <summary>
         /// Gets message language.
         /// </summary>

@@ -9,6 +9,13 @@ namespace Renci.SshNet.Messages.Transport
     [Message("SSH_MSG_KEXDH_REPLY", 31)]
     public class KeyExchangeDhReplyMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.KeyExchangeDhReplyMessage;
+            }
+        }
 #if TUNING
         private byte[] _fBytes;
 #endif

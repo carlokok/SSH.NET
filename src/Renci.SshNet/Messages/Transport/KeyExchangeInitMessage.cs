@@ -10,6 +10,13 @@ namespace Renci.SshNet.Messages.Transport
     [Message("SSH_MSG_KEXINIT", 20)]
     public class KeyExchangeInitMessage : Message, IKeyExchangedAllowed
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.KeyExchangeInit;
+            }
+        }
         private static readonly RandomNumberGenerator Randomizer = HashAlgorithmFactory.CreateRandomNumberGenerator();
 
         /// <summary>

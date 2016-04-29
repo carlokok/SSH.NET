@@ -6,6 +6,13 @@
     [Message("SSH_MSG_DISCONNECT", 1)]
     public class DisconnectMessage : Message, IKeyExchangedAllowed
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.Disconnect;
+            }
+        }
 #if TUNING
         private byte[] _description;
         private byte[] _language;

@@ -6,6 +6,13 @@
     [Message("SSH_MSG_CHANNEL_REQUEST", 98)]
     public class ChannelRequestMessage : ChannelMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelRequestMessage;
+            }
+        }
 #if TUNING
         private string _requestName;
         private byte[] _requestNameBytes;

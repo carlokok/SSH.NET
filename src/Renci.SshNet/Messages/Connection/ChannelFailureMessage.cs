@@ -6,6 +6,13 @@
     [Message("SSH_MSG_CHANNEL_FAILURE", 100)]
     public class ChannelFailureMessage : ChannelMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelFailure;
+            }
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="ChannelFailureMessage"/> class.
         /// </summary>

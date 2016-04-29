@@ -6,6 +6,13 @@
     [Message("SSH_MSG_CHANNEL_CLOSE", 97)]
     public class ChannelCloseMessage : ChannelMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelClose;
+            }
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="ChannelCloseMessage"/> class.
         /// </summary>

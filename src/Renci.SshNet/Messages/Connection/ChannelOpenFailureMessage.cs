@@ -6,6 +6,13 @@
     [Message("SSH_MSG_CHANNEL_OPEN_FAILURE", 92)]
     public class ChannelOpenFailureMessage : ChannelMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelOpenFailure;
+            }
+        }
         internal const uint AdministrativelyProhibited = 1;
         internal const uint ConnectFailed = 2;
         internal const uint UnknownChannelType = 3;

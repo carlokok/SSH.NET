@@ -6,6 +6,13 @@
     [Message("SSH_MSG_USERAUTH_PASSWD_CHANGEREQ", 60)]
     internal class PasswordChangeRequiredMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.PasswordChangeRequired;
+            }
+        }
 #if TUNING
         /// <summary>
         /// Gets password change request message as UTF-8 encoded byte array.

@@ -9,6 +9,13 @@ namespace Renci.SshNet.Messages.Transport
     [Message("SSH_MSG_KEX_DH_GEX_GROUP", MessageNumber)]
     public class KeyExchangeDhGroupExchangeGroup : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.KeyExchangeDhGroupExchangeGroup;
+            }
+        }
         internal const byte MessageNumber = 31;
 
 #if TUNING

@@ -6,6 +6,13 @@
     [Message("SSH_MSG_CHANNEL_EOF", 96)]
     public class ChannelEofMessage : ChannelMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelEof;
+            }
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="ChannelEofMessage"/> class.
         /// </summary>

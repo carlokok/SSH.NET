@@ -8,6 +8,13 @@ namespace Renci.SshNet.Messages.Authentication
     [Message("SSH_MSG_USERAUTH_FAILURE", 51)]
     public class FailureMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.Failure;
+            }
+        }
         /// <summary>
         /// Gets or sets the allowed authentications if available.
         /// </summary>

@@ -6,6 +6,13 @@
     [Message("SSH_MSG_KEXECDH_REPLY", 31)]
     public class KeyExchangeEcdhReplyMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.KeyExchangeEcdhReplyMessage;
+            }
+        }
         /// <summary>
         /// Gets a string encoding an X.509v3 certificate containing the server's ECDSA public host key
         /// </summary>

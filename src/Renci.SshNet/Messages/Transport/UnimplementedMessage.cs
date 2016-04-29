@@ -8,6 +8,13 @@ namespace Renci.SshNet.Messages.Transport
     [Message("SSH_MSG_UNIMPLEMENTED", 3)]
     public class UnimplementedMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.Unimplemented;
+            }
+        }
         /// <summary>
         /// Called when type specific data need to be loaded.
         /// </summary>

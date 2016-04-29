@@ -5,6 +5,13 @@
     /// </summary>
     internal class RequestMessageNone : RequestMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.RequestNone;
+            }
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="RequestMessagePassword"/> class.
         /// </summary>

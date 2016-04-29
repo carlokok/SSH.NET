@@ -6,6 +6,13 @@
     [Message("SSH_MSG_REQUEST_SUCCESS", 81)]
     public class RequestSuccessMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.RequestSuccess;
+            }
+        }
         /// <summary>
         /// Gets the bound port.
         /// </summary>

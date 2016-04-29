@@ -9,6 +9,13 @@ namespace Renci.SshNet.Messages.Connection
     [Message("SSH_MSG_GLOBAL_REQUEST", 80)]
     public class GlobalRequestMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.GlobalRequest;
+            }
+        }
 #if TUNING
         private byte[] _requestName;
         private byte[] _addressToBind;

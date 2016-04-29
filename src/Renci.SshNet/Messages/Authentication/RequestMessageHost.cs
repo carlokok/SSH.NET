@@ -7,6 +7,13 @@ namespace Renci.SshNet.Messages.Authentication
     /// </summary>
     internal class RequestMessageHost : RequestMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.RequestMessageHost;
+            }
+        }
         /// <summary>
         /// Gets the public key algorithm for host key as ASCII encoded byte array.
         /// </summary>

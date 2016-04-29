@@ -6,6 +6,13 @@
     [Message("SSH_MSG_CHANNEL_OPEN_CONFIRMATION", 91)]
     public class ChannelOpenConfirmationMessage : ChannelMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelOpenConfirmation;
+            }
+        }
         /// <summary>
         /// Gets the remote channel number.
         /// </summary>

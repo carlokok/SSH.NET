@@ -7,6 +7,13 @@ namespace Renci.SshNet.Messages.Authentication
     /// </summary>
     public class RequestMessagePublicKey : RequestMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.RequestPublicKey;
+            }
+        }
         /// <summary>
         /// Gets the name of the public key algorithm as ASCII encoded byte array.
         /// </summary>

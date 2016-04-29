@@ -8,6 +8,13 @@ namespace Renci.SshNet.Messages.Connection
     [Message("SSH_MSG_CHANNEL_DATA", MessageNumber)]
     public class ChannelDataMessage : ChannelMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ChannelData;
+            }
+        }
         internal const byte MessageNumber = 94;
 
         /// <summary>

@@ -5,6 +5,13 @@
     /// </summary>
     internal class RequestMessagePassword : RequestMessage
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.RequestPassword;
+            }
+        }
         /// <summary>
         /// Gets authentication password.
         /// </summary>

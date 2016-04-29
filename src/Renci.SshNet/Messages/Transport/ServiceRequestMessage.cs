@@ -9,6 +9,13 @@ namespace Renci.SshNet.Messages.Transport
     [Message("SSH_MSG_SERVICE_REQUEST", 5)]
     public class ServiceRequestMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.ServiceRequest;
+            }
+        }
 #if TUNING
         private readonly byte[] _serviceName;
 #endif

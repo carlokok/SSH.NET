@@ -8,6 +8,13 @@ namespace Renci.SshNet.Messages.Transport
     [Message("SSH_MSG_IGNORE", MessageNumber)]
     public class IgnoreMessage : Message
     {
+        public override MessageType Type
+        {
+            get
+            {
+                return MessageType.Ignore;
+            }
+        }
         internal const byte MessageNumber = 2;
 
         /// <summary>
