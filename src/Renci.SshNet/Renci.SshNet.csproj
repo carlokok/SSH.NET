@@ -450,6 +450,7 @@
     <Compile Include="ShellStream.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="SshAgent\SshAgentProtocol.cs" />
     <Compile Include="SshClient.cs" />
     <Compile Include="SshCommand.cs" />
     <Compile Include="SubsystemSession.cs" />

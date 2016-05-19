@@ -9,7 +9,7 @@ using Renci.SshNet.Common;
 
 namespace Renci.SshNet.Pageant
 {
-   public class PageantProtocol:IAgentProtocol
+   public class PageantProtocol: IAgentProtocol
     {
 
         #region  Constants
